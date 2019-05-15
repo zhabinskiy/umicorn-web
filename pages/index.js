@@ -1,13 +1,21 @@
-import { Header, Footer, Home } from "../components";
+import { Component } from "react";
+import { Meta, Header, Footer, Home } from "../components";
 
-const Index = () => (
-  <div>
-    <Header />
-    <Home.Hero />
-    <Home.Work />
-    <Home.About />
-    <Footer />
-  </div>
-);
+export default class Index extends Component {
+  componentDidMount() {
+    console.log(this.rellax);
+  }
 
-export default Index;
+  render() {
+    return (
+      <>
+        <Meta />
+        <Header color="#fff" isHome />
+        <Home.Hero />
+        <Home.Work />
+        <Home.About />
+        <Footer />
+      </>
+    );
+  }
+}

@@ -7,14 +7,14 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "now-build": "next build"
   },
   "dependencies": {
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-headroom": "^2.2.8",
-    "react-rellax": "^1.0.3",
     "react-scroll": "^1.7.11",
     "styled-components": "^4.2.0"
   },

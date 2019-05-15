@@ -46,6 +46,19 @@ a {
 .wrapper {
   max-width: 1180px;
   margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 576px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    padding: 0;
+  }
 }
 
 .headroom {
@@ -63,6 +76,7 @@ a {
   fill: #2e2e2e;
 }
 
-.headroom--pinned a {
+.headroom--pinned span,
+.headroom--pinned a span {
   color: #2e2e2e;
 }

@@ -23,11 +23,16 @@ const Logotype = styled.div`
 `;
 
 const Navigation = styled.nav`
-  text-align: right;
+  display: none;
+
+  @media (min-width: 576px) {
+    display: block;
+    text-align: right;
+  }
 `;
 
-const StyledLink = styled.a`
-  color: #fff;
+const StyledLink = styled.span`
+  color: ${props => (props.color ? props.color : "#2e2e2e")};
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.015em;
@@ -40,34 +45,52 @@ const StyledLink = styled.a`
   }
 `;
 
-const NavLink = ({ href, to, children }) =>
+const NavLink = ({ color, href, to, children }) =>
   href ? (
     <NextLink href={href}>
-      <StyledLink>{children}</StyledLink>
+      <StyledLink color={color}>{children}</StyledLink>
     </NextLink>
   ) : (
     <Link to={to} smooth={true} offset={50} duration={500}>
-      <StyledLink>{children}</StyledLink>
+      <StyledLink color={color}>{children}</StyledLink>
     </Link>
   );
 
-export default () => (
+export default ({ color, isHome }) => (
   <Headroom>
     <Container>
-      <div class="wrapper">
-        <div class="row">
-          <div class="col-xs-8">
+      <div className="wrapper">
+        <div className="row">
+          <div className="col-xs-5">
             <NextLink href="/">
               <Logotype>
-                <Logo />
+                <Logo color={color} />
               </Logotype>
             </NextLink>
           </div>
-          <div class="col-xs-4">
-            <Navigation>
-              <NavLink to="work">Work</NavLink>
-              <NavLink href="/about">About</NavLink>
-              <NavLink to="contact">Contact</NavLink>
+          <div className="col-xs-7">
+            <Navigation isHome={isHome}>
+              {isHome ? (
+                <NavLink color={color} to="work">
+                  Work
+                </NavLink>
+              ) : (
+                <NavLink color={color} href="/#work">
+                  Work
+                </NavLink>
+              )}
+              <NavLink color={color} href="/about">
+                About
+              </NavLink>
+              {isHome ? (
+                <NavLink color={color} to="contact">
+                  Contact
+                </NavLink>
+              ) : (
+                <NavLink color={color} href="/#contact">
+                  Contact
+                </NavLink>
+              )}
             </Navigation>
           </div>
         </div>

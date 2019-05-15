@@ -1,10 +1,14 @@
-import Header from "../components/Header";
+import { Meta, Header, Footer } from "../components";
+import { About } from "../components";
 
-export default function About() {
-  return (
-    <div>
-      <Header />
-      <p>This is the about page</p>
-    </div>
-  );
-}
+export default () => (
+  <>
+    <Meta title="About" />
+    <Header />
+    <About.Hero />
+    <About.Solutions />
+    <About.Testimonial />
+    <About.Gallery />
+    <Footer />
+  </>
+);

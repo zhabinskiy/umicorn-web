@@ -3,12 +3,20 @@ import Link from "next/link";
 import { Type } from "../";
 
 const Container = styled.section`
-  margin-bottom: 177px;
+  margin-top: -100px;
+
+  @media (min-width: 1024px) {
+    margin-top: 0;
+  }
 `;
 
 const Background = styled.div`
-  padding: 116px 0 84px;
+  padding: 64px 16px;
   background: #fafbfd;
+
+  @media (min-width: 576px) {
+    padding: 116px 0 84px;
+  }
 `;
 
 const Title = styled(Type.H2)`
@@ -71,10 +79,10 @@ const Text = styled.span`
 
 export default () => (
   <Container>
-    <div class="wrapper">
+    <div className="wrapper">
       <Background>
-        <div class="row center-xs">
-          <div class="col-lg-8">
+        <div className="row center-xs">
+          <div className="col-xs-12 col-sm-10 col-lg-8">
             <Title>Who we are</Title>
             <Description>
               We assist businesses in bringing new products to market: help

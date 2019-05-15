@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import NextLink from "next/link";
-import Parallax from "react-rellax";
 import { Type } from "../";
 
 const Container = styled.section`
   position: relative;
   top: -180px;
-  margin-bottom: 360px;
 `;
 
 const Block = styled.div`
   position: relative;
   cursor: pointer;
   ${({ marginTop }) => marginTop && `margin-top: ${marginTop};`}
+
+  @media (max-width: 1024px) {
+    margin-top: 64px;
+  }
 
   &:hover {
     img {
@@ -26,17 +28,23 @@ const ExternalLink = styled.a`
 `;
 
 const Cover = styled.img`
-  width: 441px;
+  width: 100%;
   transform: scale(0.97);
   transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media (min-widht: 1024px) {
+    width: 441px;
+  }
 `;
 
 const Title = styled(Type.H3)`
   padding: 24px 6px 12px;
+  text-align: left;
 `;
 
 const Tags = styled.span`
   display: block;
+  text-align: left;
   width: 80%;
   padding: 0 6px;
   font-size: 18px;
@@ -47,11 +55,15 @@ const Tags = styled.span`
 
 const Dribbble = styled.a`
   display: block;
-  width: 89%;
-  margin-top: 40px;
+  margin-top: 64px;
   padding: 42px 0;
   text-align: center;
   overflow: hidden;
+
+  @media (min-width: 1024px) {
+    width: 89%;
+    margin-top: 140px;
+  }
 
   &:hover {
     a {
@@ -118,43 +130,39 @@ const Link = styled.a`
 
 const Card = ({ href, to, png, gif, name, tags, marginTop }) =>
   href ? (
-    <Parallax>
-      <ExternalLink href={href} target="_blank">
-        <Block marginTop={marginTop}>
-          <Cover
-            src={
-              png
-                ? `/static/img/work/${png}@2x.png`
-                : gif && `/static/img/work/${gif}@2x.gif`
-            }
-          />
-          <Title>{name}</Title>
-          <Tags>{tags}</Tags>
-        </Block>
-      </ExternalLink>
-    </Parallax>
+    <ExternalLink href={href} target="_blank">
+      <Block marginTop={marginTop}>
+        <Cover
+          src={
+            png
+              ? `/static/img/work/${png}@2x.png`
+              : gif && `/static/img/work/${gif}@2x.gif`
+          }
+        />
+        <Title>{name}</Title>
+        <Tags>{tags}</Tags>
+      </Block>
+    </ExternalLink>
   ) : (
-    <Parallax>
-      <NextLink href={to}>
-        <Block marginTop={marginTop}>
-          <Cover
-            src={
-              png
-                ? `/static/img/work/${png}@2x.png`
-                : gif && `/static/img/work/${gif}@2x.gif`
-            }
-          />
-          <Title>{name}</Title>
-          <Tags>{tags}</Tags>
-        </Block>
-      </NextLink>
-    </Parallax>
+    <NextLink href={to}>
+      <Block marginTop={marginTop}>
+        <Cover
+          src={
+            png
+              ? `/static/img/work/${png}@2x.png`
+              : gif && `/static/img/work/${gif}@2x.gif`
+          }
+        />
+        <Title>{name}</Title>
+        <Tags>{tags}</Tags>
+      </Block>
+    </NextLink>
   );
 export default () => (
   <Container id="work">
-    <div class="wrapper">
-      <div class="row">
-        <div class="col-lg-offset-1 col-lg-5">
+    <div className="wrapper">
+      <div className="row center-xs start-md">
+        <div className="col-xs-12 col-sm-8 col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-5">
           <Card
             href="https://actscope.com"
             png="actscope"
@@ -169,14 +177,14 @@ export default () => (
             tags="Creative Concept, Interaction Design, Motion Design"
           />
           <Card
-            href="https://dribbble.com/shots/4967424-Ryanair"
+            href="https://momlife.io"
             marginTop="160px"
-            png="ryanair"
-            name="Ryanair"
-            tags="UX Research, Creative Concept"
+            png="momlife"
+            name="Momlife ICO"
+            tags="Creative Concept, Landing Page, Dashboard Web Application"
           />
         </div>
-        <div class="col-lg-offset-1 col-lg-5">
+        <div className="col-xs-12 col-sm-8 col-md-offset-1 col-md-4 col-lg-offset-1 col-lg-5">
           <Card
             href="https://dribbble.com/shots/4958836-Sherwood-s-Tennis-Courts-Invitation"
             marginTop="205px"
@@ -191,12 +199,11 @@ export default () => (
             name="Arbidex (Trading Platform)"
             tags="UX Research, Prototyping, Web Application"
           />
-          <Parallax>
-            <Dribbble href="https://dribbble.com/umicorn" target="_blank">
-              <Ball />
-              <Link>See more works on Dribbble</Link>
-            </Dribbble>
-          </Parallax>
+
+          <Dribbble href="https://dribbble.com/umicorn" target="_blank">
+            <Ball />
+            <Link>See more works on Dribbble</Link>
+          </Dribbble>
         </div>
       </div>
     </div>

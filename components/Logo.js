@@ -1,9 +1,9 @@
-export default () => (
+export default ({ color }) => (
   <svg
     width="125"
     height="25"
     viewBox="0 0 125 25"
-    fill="#ffffff"
+    fill={color ? color : "#2e2e2e"}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M0 0H24.5475V12.2738C24.5475 19.0524 19.0524 24.5475 12.2738 24.5475C5.49515 24.5475 0 19.0524 0 12.2738V0Z" />
